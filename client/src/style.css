@@ -21,10 +21,12 @@
         background-image: hide;
     }
 }
-body {
-    background-image: url("/img/bground.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+.container {
+    padding: 10px;
 }
+.title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
