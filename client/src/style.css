@@ -21,12 +21,9 @@
         background-image: hide;
     }
 }
-.container {
-    padding: 10px;
-}
 .title {
     width: 100%;
-    text-align: center;
     margin-bottom: 50px;
+    font-family: 'Sacramento', cursive;
+    text-align: center;
   }
-  

@@ -17,7 +17,7 @@ state = {
   render() {
     return (
       <Wrapper>
-        <Title>Choose Your Character</Title>
+        <Title>Middle Earth - Memory Game</Title>
         {this.state.lorList.map(lorChar => (
           <Grid
             id={lorChar.id}
