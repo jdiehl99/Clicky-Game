@@ -23,7 +23,8 @@
 }
 .title {
     width: 100%;
-    margin-bottom: 50px;
+    font-size: 48px;
+    margin-bottom: 30px;
     font-family: 'Sacramento', cursive;
     text-align: center;
   }
