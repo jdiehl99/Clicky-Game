@@ -33,21 +33,24 @@ class App extends Component {
   };
 
   handleClick = id => {
-    let goodGuess = false;
-    const newLayout = lorList.map(item => {
-      const thisChar = {...item};
-      if (id === thisChar.id) {
-        if(!thisChar.clicked) {
-          thisChar.clicked = true;
-          goodGuess = true;
-        } 
-      } 
-      return thisChar;
-    });
+// maybe do a new array for clicked ones and use indexOf?
 
-    goodGuess
-      ? this.clickRight(newLayout)
-      : this.clickWrong(newLayout);
+
+    // let goodGuess = false;
+    // const newLayout = lorList.map(item => {
+    //   const thisChar = {...item};
+    //   if (id === thisChar.id) {
+    //     if(!thisChar.clicked) {
+    //       thisChar.clicked = true;
+    //       goodGuess = true;
+    //     } 
+    //   } 
+    //   return thisChar;
+    // });
+
+    // goodGuess
+    //   ? this.clickRight(newLayout)
+    //   : this.clickWrong(newLayout);
   };
 
   resetGame = () => {
