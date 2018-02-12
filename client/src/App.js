@@ -62,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-      <Header></Header>
+      <Header currentScore={this.state.currentScore} record={this.state.record}></Header>
         <Title></Title>
         {this
           .state
