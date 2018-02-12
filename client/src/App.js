@@ -3,6 +3,7 @@ import './style.css';
 import Grid from "./components/Grid";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
+import Header from "./components/Header";
 import lorList from "./lor.json";
 
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
+      <Header></Header>
         <Title></Title>
         {this
           .state
