@@ -31,20 +31,39 @@ class App extends Component {
 
     return lorList;
   };
-  
+
+  handleClick = id => {
+    let goodGuess = false;
+    const newLayout = lorList.map(item => {
+      const thisChar = {...item};
+      if (id === thisChar.id) {
+        if(!thisChar.clicked) {
+          thisChar.clicked = true;
+          goodGuess = true;
+        } 
+      } 
+      return thisChar;
+    });
+
+    goodGuess
+      ? this.clickRight(newLayout)
+      : this.clickWrong(newLayout);
+  };
+
   resetGame = () => {
-    const newGame = lorList.map(item => ({ ...item, clicked: false }));
-    return this.shuffleCards(newGame)
-  }
-
-  handleClick = () => {
-
+    const newGame = lorList.map(item => ({
+      ...item,
+      clicked: false
+    }));
+    return this.shuffleCards(newGame);
   }
 
   clickRight = updateGame => {
     const {currentScore, record} = this.state;
     const newScore = currentScore + 1;
-    const newRecord = newScore > record ? newScore: record;
+    const newRecord = newScore > record
+      ? newScore
+      : record;
     this.setState({
       lorList: this.shuffleCards(updateGame),
       currentScore: newScore,
@@ -62,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-      <Header currentScore={this.state.currentScore} record={this.state.record}></Header>
+        <Header currentScore={this.state.currentScore} record={this.state.record}></Header>
         <Title></Title>
         {this
           .state
@@ -72,8 +91,8 @@ class App extends Component {
             key={lorChar.id}
             name={lorChar.name}
             image={lorChar.image}
-            onClick={this.handleClick}
-            />))}
+            handleClick={this.handleClick}/>))
+}
       </Wrapper>
     );
   }
