@@ -7,11 +7,17 @@ import Header from "./components/Header";
 import lorList from "./lor.json";
 
 class App extends Component {
-  state = {
+
+ state = {
     lorList,
     currentScore: 0,
-    record: 0
+    record: 0,
+    clickArr: [],
+    alert
   };
+
+
+
 
   componentDidMount() {
     this.setState({
@@ -33,24 +39,16 @@ class App extends Component {
   };
 
   handleClick = id => {
-// maybe do a new array for clicked ones and use indexOf?
-
-
-    // let goodGuess = false;
-    // const newLayout = lorList.map(item => {
-    //   const thisChar = {...item};
-    //   if (id === thisChar.id) {
-    //     if(!thisChar.clicked) {
-    //       thisChar.clicked = true;
-    //       goodGuess = true;
-    //     } 
-    //   } 
-    //   return thisChar;
-    // });
-
-    // goodGuess
-    //   ? this.clickRight(newLayout)
-    //   : this.clickWrong(newLayout);
+    var testClick = this.state.clickArr.includes(id);
+    if (testClick === true) {
+      this.clickWrong(this.state.lorList);
+      this.setState({
+        alert: "You already guessed that one!"
+      })
+    } else {
+      this.state.clickArr.push(id);
+      this.clickRight(this.state.lorList);
+    }
   };
 
   resetGame = () => {
@@ -62,6 +60,7 @@ class App extends Component {
   }
 
   clickRight = updateGame => {
+    console.log("right guess");
     const {currentScore, record} = this.state;
     const newScore = currentScore + 1;
     const newRecord = newScore > record
@@ -70,13 +69,16 @@ class App extends Component {
     this.setState({
       lorList: this.shuffleCards(updateGame),
       currentScore: newScore,
-      record: newRecord
+      record: newRecord,
+      alert: ""
     });
   }
 
   clickWrong = () => {
+    console.log("wrong guess");
     this.setState({
       currentScore: 0,
+      clickArr: [],
       lorList: this.resetGame(lorList)
     });
   }
@@ -84,7 +86,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Header currentScore={this.state.currentScore} record={this.state.record}></Header>
+        <Header currentScore={this.state.currentScore} record={this.state.record} alert={this.state.alert} ></Header>
         <Title></Title>
         {this
           .state
@@ -94,6 +96,7 @@ class App extends Component {
             key={lorChar.id}
             name={lorChar.name}
             image={lorChar.image}
+            className={this.state.cShake}
             handleClick={this.handleClick}/>))
 }
       </Wrapper>

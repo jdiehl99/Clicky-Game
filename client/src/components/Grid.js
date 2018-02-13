@@ -5,7 +5,7 @@ import "./Grid.css";
 const Grid = props => (
   <div className="card">
     <div className="img-container">
-      <img alt={props.name} src={props.image} onClick={() => props.handleClick(props.id)}/>
+      <img alt={props.name} src={props.image} className={props.cShake} onClick={() => props.handleClick(props.id)}/>
     </div>
   </div>
 );
